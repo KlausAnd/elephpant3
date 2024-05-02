@@ -29,3 +29,8 @@ function wrap(string $mensagem)
         }
         return $id ['saldo'];
     }
+
+    function removeConta(array &$id) {
+    unset ($id);
+    return 0;
+    }

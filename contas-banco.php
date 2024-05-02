@@ -18,20 +18,27 @@
     ];
 
     
-    $menu = readline('Visualizar lista? \'s\' ou \'n\' ');
+    $menu = mb_strtolower(readline('Visualizar lista? \'s\' ou \'n\' '));
     if($menu == 's'){
         echo  "\tprocessando..." . PHP_EOL;
         foreach ($contasCorrentes as $cpf => $conta) {
-            $mensagem = wrap("$cpf $conta[titular] $conta[saldo]");
+            ['titular' => $titular  , 'saldo' => $saldo] = $conta;
+            wrap("$cpf' $titular $saldo");
         }
     }    
-    $opt = readline("Deseja sacar de alguma conta? s ou n: ");
+    $opt = mb_strtolower(readline("Deseja sacar de alguma conta? s ou n: "));
     if($opt == 's'){
         $idSaque = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
         $contasCorrentes[$idSaque]['saldo'] = saque($contasCorrentes[$idSaque]);
     }
-    $opt = readline('Deseja realizar depósito? s ou n: ');
+    $opt = mb_strtolower(readline('Deseja realizar depósito? s ou n: '));
     if($opt == 's'){
-        $idSaque = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
-        $contasCorrentes[$idSaque]['saldo'] = deposito($contasCorrentes[$idSaque]);
+        $idDeposito = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
+        $contasCorrentes[$idDeposito]['saldo'] = deposito($contasCorrentes[$idDeposito]);
+    }
+
+    $opt = mb_strtolower(readline('CPF banido? s ou n:  '));
+    if($opt == 's'){
+        $idBan = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
+        $contasCorrentes[$idBan] = removeConta($contasCorrentes[$idBan]);
     }
