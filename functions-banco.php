@@ -29,13 +29,3 @@ function wrap(string $mensagem)
         }
         return $id ['saldo'];
     }
-
-/* trabalhando key error
-    function addConta($newId){
-        $nome = readline('Nome do titular: ');
-        $newId = [
-            'titular' => $nome,
-            'saldo' => 0
-        ];
-        return $newId;
-    } */
