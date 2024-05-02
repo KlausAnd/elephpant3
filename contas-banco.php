@@ -1,24 +1,34 @@
 <?php
     echo"\tContas" . PHP_EOL;
 
-    function addConta($newId){
-        $newId['titular'] = readline('titular: ');
-        $newId['saldo'] = 0;
-        return $newId;
-    }
-
-    function saque($id){
+    function saque(array $id): float
+    {
         $valor = readline('valor: ');
         if ($id['saldo'] < $valor){
             echo 'saldo insuficiente' . PHP_EOL;
-            return $id['saldo'];
         }
-        $id ['saldo'] -= $valor;
+        else{
+            $id ['saldo'] -= $valor;
+            echo 'Saque realizado com sucesso na conta de ' . $id['titular'] . PHP_EOL;
+        }
+        return $id ['saldo'];
+    }
+
+    function deposito(array $id): float
+    {
+        $valor = readline('valor: ');
+        if ($valor < 0){
+            echo 'valor inválido'. PHP_EOL;
+        }
+        else{
+            $id ['saldo'] += $valor;
+            echo 'Depósito realizado com sucesso na conta de ' . $id['titular'] . PHP_EOL;
+        }
         return $id ['saldo'];
     }
 
     $contasCorrentes = [
-        '522.443.322-31' => [
+        '000.000.000-00' => [
             'titular' => "Luis",
             'saldo' => 2343.64
         ],
@@ -32,27 +42,20 @@
         ]
     ];
 
-    $contasCorrentes['394.453.421-32'] = [
-            'titular'=> 'Joana',
-            'saldo' => 3244.33 
-    ];
-
     $menu = readline('Visualizar lista? \'s\' ou \'n\' ');
     if($menu == 's'){
-        echo  "processando..." . PHP_EOL;
+        echo  "\tprocessando..." . PHP_EOL;
         foreach ($contasCorrentes as $cpf => $conta) {
             echo $cpf . " ". $conta['titular'] . " " . $conta['saldo'] . PHP_EOL; 
         }
     }    
-
-    $opt = readline('Deseja sacar de Luis? s ou n: ');
+    $opt = readline("Deseja sacar de alguma conta? s ou n: ");
     if($opt == 's'){
-        $contasCorrentes['522.443.322-31']['saldo'] = saque($contasCorrentes['522.443.322-31']);
+        $idSaque = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
+        $contasCorrentes[$idSaque]['saldo'] = saque($contasCorrentes[$idSaque]);
     }
-
-    $nova = readline('cpf: ');
-    $contasCorrentes[$nova] = addConta($contasCorrentes[$nova]);
-
-    foreach ($contasCorrentes as $cpf => $conta) {
-        echo $cpf . " ". $conta['titular'] . " " . $conta['saldo'] . PHP_EOL; 
+    $opt = readline('Deseja realizar depósito? s ou n: ');
+    if($opt == 's'){
+        $idSaque = readline('Digite o cpf no padrão XXX.XXX.XXX-XX:  ');
+        $contasCorrentes[$idSaque]['saldo'] = deposito($contasCorrentes[$idSaque]);
     }
