@@ -1,7 +1,7 @@
 <?php
 require_once 'functions-arrays.php';
 
-$notas = [
+    $notas1bi = [
 
         "joao" => 8.4,
         "maria" => 7.2,
@@ -10,18 +10,22 @@ $notas = [
         "lucas" => null
     ];
     
+    $notas2bi = [
 
-    echo "aluno existe?".PHP_EOL;
-    $nome = readline('nome: ');
-    $consulta = consultaAluno($notas, $nome);
-    echo $consulta;
+        "joao" => 6,
+        "maria" => 9.5,
+        "luis" => 7,
+        "zeca" => 8.4,
+        "lucas" => 10,
+        "marquinhos" => 7.6,
+        "zezinho" => 5.3,
+        "jorlan" => null,
+        "dorival" => 3
+    ];
 
-    echo "alguem nao fez prova?" .PHP_EOL;
-    if(in_array(null , $notas) == 1){
-        echo "sim".PHP_EOL;
-    };
+
+    echo "aluno matriculado no 1º bimestre?".PHP_EOL;
+    consultaAluno($notas1bi);
+
+    $novatos = viewNovato($notas2bi, $notas1bi);
     
-    if (in_array(null, $notas)) {
-        $repetente = array_search(null , $notas); //achar key => null
-        echo $repetente . ' não fez e repetiu'. PHP_EOL;
-    }
