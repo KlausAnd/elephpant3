@@ -26,29 +26,34 @@ require_once 'functions-classroom.php';
 
     $turma2 = [
         '1' => [
-            "b" => 8.4,
-            "a" => 7.2,
-            "f" => 10,
-            "d" => 6,
-            "o" => null
+            "bia" => 8.4,
+            "apolo" => 7.2,
+            "fernando" => 10,
+            "mariana" => 6,
+            "olinda" => null
         ],
         
         '2' => [
 
-            "b" => 8.4,
-            "a" => 7.2,
-            "f" => 10,
-            "d" => 6,
-            "o" => null,
-            "x" => 7.6,
-            "c" => 5.3,
-            "z" => null,
-            "t"=> 3
+            "bia" => 8.4,
+            "apolo" => 7.2,
+            "fernando" => 10,
+            "mariana" => 6,
+            "olinda" => null,
+            "eric carteado" => 7.6,
+            "bob espuma" => 5.3,
+            "bartolomeu simpson" => null,
+            "morty sancho"=> 3
         ]
     ];
 
     echo "Consulte a turma".PHP_EOL;
     consultaAluno($turma1 , $turma2);
 
-    $novatos = viewNovatos($turma1,  $turma2);
-    
+    $novatos = viewNovatos($turma2,  $turma1);
+
+    echo PHP_EOL . "add aluno T1 - 2ºbim".PHP_EOL;
+    $add = addAluno();
+    $turma1[2] += $add;
+    var_dump($turma1);
+    var_dump($turma2);
