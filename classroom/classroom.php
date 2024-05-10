@@ -1,5 +1,5 @@
 <?php
-require_once 'functions-classroom.php';
+require_once './functions-classroom.php';
 
     $turma1 = [
         '1' => [
@@ -55,5 +55,3 @@ require_once 'functions-classroom.php';
     echo PHP_EOL . "add aluno T1 - 2ºbim".PHP_EOL;
     $add = addAluno();
     $turma1[2] += $add;
-    var_dump($turma1);
-    var_dump($turma2);
