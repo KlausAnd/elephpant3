@@ -1,9 +1,14 @@
 <?php
+    namespace Alura\Banco\Modelo\Conta;
+
+    use Alura\Banco\Modelo\Pessoa;
+    use Alura\Banco\Modelo\Endereco;
+    use Alura\Banco\Modelo\CPF;
     class Conta {
         private static $numeroContas;
 
         /*readonly e promotion no construtor */
-        public function __construct(readonly Titular $titular, private float $saldo  = 0) {
+        public function __construct(readonly Titular $titular, private Endereco $endereco,  private float $saldo  = 0) {
             self::$numeroContas ++;
             echo "Conta criada" .PHP_EOL;
         }
