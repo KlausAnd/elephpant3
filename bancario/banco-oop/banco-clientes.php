@@ -2,21 +2,16 @@
 
 require "autoload.php";
 
-use Alura\Banco\Modelo\Conta\Titular;
-use Alura\Banco\Modelo\Endereco;
-use Alura\Banco\Modelo\CPF;
-use Alura\Banco\Modelo\Conta\Conta;
+use Alura\Banco\Modelo\Conta\{ContaPoupanca, ContaCorrente, Titular};
+use Alura\Banco\Modelo\{Endereco, CPF};
 
     $endereco = new Endereco(readline('Cidade: '), readline('Rua: '), readline('Numero: '));
     $titular =  new Titular(new CPF(readline('CPF: ')), readline('Titular: '), $endereco);
-    $conta = new Conta($titular, $endereco);
-
-    $conta->deposita(1220);
-    $conta->saque(200);
+    $conta = new ContaPoupanca($titular, $endereco);
+    $conta->deposita(100);
+    $conta->saca(10);
     echo $conta->getSaldo() . PHP_EOL;
 
     echo $titular->getCPF();
-
-    echo PHP_EOL . Conta::numeroContas() . PHP_EOL;
 
     var_dump($conta);

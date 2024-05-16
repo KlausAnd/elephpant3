@@ -2,7 +2,7 @@
 namespace Alura\Banco\Modelo;
 
 use Alura\Banco\Modelo\CPF;
-    class Pessoa{
+    abstract class Pessoa{
         public function __construct(protected string $nome, protected CPF $cpf){
             $this->validaNome($nome);
             $this->nome = $nome;
@@ -18,8 +18,8 @@ use Alura\Banco\Modelo\CPF;
         }
 
         private function validaNome($nome): void{
-            if(strlen($nome) < 5){
-                echo 'Nome precisa de 5 caracteres' . PHP_EOL;
+            if(strlen($nome) < 3){
+                echo 'Nome Invalido' . PHP_EOL;
                 exit();
             }
         }
