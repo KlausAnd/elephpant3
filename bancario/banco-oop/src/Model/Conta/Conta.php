@@ -11,6 +11,10 @@
             echo "Conta criada" .PHP_EOL;
         }
 
+    function __debugInfo()
+    {
+        
+    }
         
         public function deposita(float $valor): void{   
             if($valor <= 0){ 

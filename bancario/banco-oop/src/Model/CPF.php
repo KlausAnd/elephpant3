@@ -1,6 +1,6 @@
 <?php
 namespace Alura\Banco\Modelo;
-    class CPF{
+    final class CPF{
         public function __construct(readonly string $cpf){
         }
 
