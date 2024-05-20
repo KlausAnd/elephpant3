@@ -10,11 +10,6 @@
         public function __construct(readonly Titular $titular, private Endereco $endereco,  protected float $saldo  = 0) {
             echo "Conta criada" .PHP_EOL;
         }
-
-    function __debugInfo()
-    {
-        
-    }
         
         public function deposita(float $valor): void{   
             if($valor <= 0){ 
